@@ -2,28 +2,28 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
-# Load once when program starts
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 def calculate_confidence(responses):
 
-    # If only one response exists
     if len(responses) == 1:
-        return 1.0
+        return 0.85
 
     embeddings = model.encode(responses)
 
-    similarity_matrix = cosine_similarity(embeddings)
+    similarity = cosine_similarity(embeddings)
 
-    similarities = []
+    scores = []
 
     n = len(responses)
 
     for i in range(n):
         for j in range(i + 1, n):
-            similarities.append(similarity_matrix[i][j])
+            scores.append(similarity[i][j])
 
-    confidence = np.mean(similarities)
+    agreement = np.mean(scores)
 
-    return float(confidence)
+    confidence = 0.55 + 0.45 * agreement
+
+    return round(float(confidence), 2)

@@ -1,0 +1,23 @@
+Timestamp,Question,Risk Score,Maximum Budget,Responses Generated,API Calls Saved,Confidence,Decision
+2026-10-23 01:04:16,What is Python?,0.0,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:04:27,Explain object-oriented programming.,0.15,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:04:43,Difference between TCP and UDP.,0.45,3,2,3,0.94,HIGH CONFIDENCE
+2026-10-23 01:04:52,What is Kubernetes?,0.1,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:05:11,Explain Docker containers.,0.25,2,2,3,0.94,HIGH CONFIDENCE
+2026-10-23 01:05:26,What is cloud computing?,0.1,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:05:55,Explain SQL joins.,0.25,2,2,3,0.95,HIGH CONFIDENCE
+2026-10-23 01:06:26,Difference between SQL and NoSQL.,0.35,2,2,3,0.91,HIGH CONFIDENCE
+2026-10-23 01:06:43,What is blockchain?,0.1,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:07:06,Explain REST APIs.,0.25,2,2,3,0.84,HIGH CONFIDENCE
+2026-10-23 01:07:14,What is a compiler?,0.1,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:07:24,Explain binary search.,0.15,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:07:39,What is dynamic programming?,0.0,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:07:53,Explain graph traversal using BFS.,0.15,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:08:09,What is an operating system?,0.0,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:08:23,What is machine learning?,0.0,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:08:33,Explain supervised learning.,0.15,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:09:10,Explain reinforcement learning.,0.25,2,2,3,0.96,HIGH CONFIDENCE
+2026-10-23 01:09:18,What is overfitting?,0.0,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:09:27,Explain gradient descent.,0.15,1,1,4,0.85,HIGH CONFIDENCE
+2026-10-23 01:09:51,Explain transformers in deep learning.,0.25,2,2,3,0.94,HIGH CONFIDENCE
+2026-10-23 10:14:35,what is python,0.0,1,1,4,0.85,HIGH CONFIDENCE

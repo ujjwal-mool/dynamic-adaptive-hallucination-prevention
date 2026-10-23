@@ -3,7 +3,9 @@ TECHNICAL_KEYWORDS = [
     "gpu", "cuda", "decoherence", "superconducting",
     "neural", "reinforcement", "bayesian", "diffusion",
     "embedding", "token", "inference", "fine-tuning",
-    "cryptography", "compiler", "kernel"
+    "cryptography", "compiler", "kernel",
+    "docker", "kubernetes", "blockchain", "sql",
+    "tcp", "udp", "database", "cloud", "api"
 ]
 
 TEMPORAL_KEYWORDS = [
@@ -11,30 +13,40 @@ TEMPORAL_KEYWORDS = [
     "2024", "2025", "2026", "2030", "2035"
 ]
 
+REASONING_KEYWORDS = [
+    "compare", "difference", "advantages", "disadvantages",
+    "limitations", "future", "impact", "should",
+    "better", "versus", "vs", "tradeoff", "evaluate"
+]
+
+
 def get_risk(question):
 
     q = question.lower()
 
     score = 0
 
-    # Long questions
+    # Length
     if len(q) > 50:
+        score += 0.10
+
+    if len(q) > 90:
+        score += 0.10
+
+    # Explain / How / Why
+    if any(word in q for word in ["why", "how", "explain"]):
         score += 0.15
 
-    # Complex reasoning words
-    if any(word in q for word in ["why", "how", "explain", "compare", "analyze"]):
-        score += 0.2
+    # Comparative reasoning
+    if any(word in q for word in REASONING_KEYWORDS):
+        score += 0.25
 
-    # Technical topics
+    # Technical complexity
     tech_count = sum(word in q for word in TECHNICAL_KEYWORDS)
-    score += min(tech_count * 0.1, 0.3)
+    score += min(tech_count * 0.10, 0.30)
 
-    # Time-sensitive questions
+    # Time-sensitive
     if any(word in q for word in TEMPORAL_KEYWORDS):
-        score += 0.3
+        score += 0.25
 
-    return min(score, 1.0)
-
-print(get_risk("What is the weather?"))
-print(get_risk("How does quantum computing work?"))
-print(get_risk("What is the latest GPU technology in 2026?"))
+    return round(min(score, 1.0), 2)

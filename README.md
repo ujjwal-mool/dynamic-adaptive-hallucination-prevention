@@ -16,7 +16,3 @@ A research-oriented framework for reducing hallucinations in Large Language Mode
 - Google Gemini API
 - SentenceTransformers
 - scikit-learn
-
-## Project Status
-
-🚧 Version 0.5 - Core Pipeline Completed

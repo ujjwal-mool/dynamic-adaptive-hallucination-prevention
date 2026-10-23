@@ -1,30 +1,39 @@
-from llm import generate
-from risk import get_risk
-from allocator import allocate
-from prompt import PROMPTS
-from confidence import calculate_confidence
+from pipeline import run_pipeline
 
 question = input("Enter your question: ")
 
-risk = get_risk(question)
-num = allocate(risk)
+result = run_pipeline(question)
 
-print(f"\nRisk Score: {risk}")
-print(f"Perspectives: {num}")
+print("\n========================================")
+print("DAHP RESULTS")
+print("========================================")
 
-responses = []
+print(f"Risk Score          : {result['risk']:.2f}")
+print(f"Maximum Budget      : {result['budget']}")
 
-for i in range(num):
+print("\n========================================")
+print("GENERATED PERSPECTIVES")
+print("========================================")
 
-    answer = generate(question, PROMPTS[i])
+for i, response in enumerate(result["responses"], start=1):
 
-    responses.append(answer)
+    print(f"\n========== Perspective {i} ==========\n")
 
-    print(f"\n========== Perspective {i+1} ==========\n")
+    print(response)
 
-    print(answer)
+print("\n========================================")
+print("CONSENSUS ANSWER")
+print("========================================")
 
-confidence = calculate_confidence(responses)
+print(result["final_answer"])
 
-print("\n=========================")
-print(f"Confidence : {confidence:.2f}")
+print("\n========================================")
+print("FINAL SUMMARY")
+print("========================================")
+
+print(f"Responses Generated : {result['responses_generated']}")
+print(f"API Calls Saved     : {result['budget'] - result['responses_generated']}")
+print(f"Final Confidence    : {result['confidence']:.2f}")
+print(f"Decision            : {result['decision']}")
+
+print("========================================")

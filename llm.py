@@ -1,23 +1,30 @@
-from google import genai
-import os
+from openai import OpenAI
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client = OpenAI(
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1",
+    default_headers={
+        "HTTP-Referer": "http://localhost",
+        "X-Title": "DAHP"
+    }
+)
+
+MODEL = "recursive/flint-v1.0:free"
+
 
 def generate(question, system_prompt=""):
-
-    prompt = f"""
-{system_prompt}
-
-Question:
-{question}
-"""
-
-    response = client.models.generate_content(
-        model="gemini-3.6-flash",      # or the Gemini model you're using successfully
-        contents=prompt
+    response = client.chat.completions.create(
+        model=MODEL,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": question},
+        ],
     )
 
-    return response.text
+    print(response)
+
+    return response.choices[0].message.content
