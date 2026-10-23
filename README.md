@@ -209,6 +209,3 @@ Dayananda Sagar College of Engineering
 
 B.E. Computer Science
 
-```
-
-I think this README is strong enough for both your GitHub portfolio and your project presentation. It explains the motivation, architecture, implementation, and usage without overselling the project.
